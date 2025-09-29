@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoofFlow AI - Free Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .form-container {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <div class="container mx-auto px-4 py-8 md:py-16">
+
+        <!-- Header: Your RoofFlow AI Logo -->
+        <header class="text-center mb-12">
+            <img src="roofflow (1).png" alt="RoofFlow AI Logo" class="mx-auto h-24 w-auto">
+        </header>
+
+        <main>
+            <!-- Main Headline -->
+            <h1 class="text-3xl md:text-5xl font-extrabold text-center mb-4 text-gray-900">
+                FREE REPORT: The Leaky Bucket Secret
+            </h1>
+
+            <!-- Sub-headline -->
+            <p class="text-lg md:text-xl text-center text-gray-600 mb-12 max-w-4xl mx-auto">
+                Discover The #1 Reason UK Roofers Lose Profitable Jobs To Slower, Cheaper Competitors... And How To Fix It In 48 Hours.
+            </p>
+
+            <div class="flex justify-center">
+
+                <!-- Right Side: Bullet Points & The Form -->
+                <div class="w-full max-w-2xl">
+                    <h2 class="text-2xl font-bold mb-4">Inside this free report, you'll discover:</h2>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-3 mt-1">✅</span>
+                            <span><strong>The "Golden 5 Minutes":</strong> Why your chance of winning a new job drops by 80% if you don't respond within this tiny window (and how your competitors are ruthlessly exploiting it).</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-3 mt-1">✅</span>
+                            <span><strong>The £3,550 Mistake:</strong> The real, painful cost of a single missed website lead. We'll show you how to calculate exactly what this is costing your business each month.</span>
+                        </li>
+                        <li class="flex items-start">
+                             <span class="text-green-500 mr-3 mt-1">✅</span>
+                            <span><strong>The Unfair Advantage:</strong> The simple, automated system that makes you the first contractor they speak to, every single time, even if you're up on a roof or pricing a job.</span>
+                        </li>
+                    </ul>
+
+                    <p class="font-semibold mb-4 text-center md:text-left">Enter your details below to get instant access:</p>
+
+                    <div class="bg-gray-200 p-6 rounded-lg shadow-inner">
+                        <form id="optin-form">
+                            <div class="mb-4">
+                                <label for="fname" class="font-bold block mb-2">First Name:</label>
+                                <input type="text" id="fname" name="fname" placeholder="Enter your first name" class="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+                            </div>
+                            <div class="mb-6">
+                                <label for="email" class="font-bold block mb-2">Primary Email Address:</label>
+                                <input type="email" id="email" name="email" placeholder="Enter your best email address" class="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+                            </div>
+                            <button type="submit" class="w-full p-4 bg-orange-600 text-white border-none font-bold text-lg rounded-md cursor-pointer hover:bg-orange-700 transition-colors duration-300 shadow-lg">
+                                GET THE FREE REPORT NOW!
+                            </button>
+                        </form>
+                         <div id="form-message" class="mt-4 text-center"></div>
+                    </div>
+                    <p class="text-center text-xs text-gray-500 mt-4">🔒 100% Secure. We never share your email.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const form = document.getElementById('optin-form');
+        const messageDiv = document.getElementById('form-message');
+        const submitButton = form.querySelector('button[type="submit"]');
+
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault(); // Stop the form from submitting the traditional way
+
+            const webhookUrl = 'https://primary-production-58a3.up.railway.app/webhook-test/9f58fa98-ac8c-447e-92ea-f5fc589c3ada';
+            const firstName = document.getElementById('fname').value;
+            const email = document.getElementById('email').value;
+
+            // Disable button and show loading text to prevent multiple submissions
+            submitButton.disabled = true;
+            submitButton.textContent = 'SENDING...';
+
+            const data = {
+                firstName: firstName,
+                email: email
+            };
+
+            try {
+                const response = await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    // Webhook received the data successfully
+                    messageDiv.innerHTML = `<p class="text-green-600 font-semibold">Thank you, ${firstName}! Your report is on its way.</p>`;
+                    messageDiv.classList.remove('text-red-600');
+                    messageDiv.classList.add('text-green-600');
+                    form.reset();
+                } else {
+                    // Webhook returned an error
+                    const errorData = await response.text();
+                    messageDiv.innerHTML = `<p class="text-red-600 font-semibold">Oops! Something went wrong. Please try again.</p>`;
+                    messageDiv.classList.remove('text-green-600');
+                    messageDiv.classList.add('text-red-600');
+                    console.error('Webhook error:', errorData);
+                }
+            } catch (error) {
+                // Network error or other issue with the fetch request
+                messageDiv.innerHTML = `<p class="text-red-600 font-semibold">Could not connect. Please check your internet connection and try again.</p>`;
+                messageDiv.classList.remove('text-green-600');
+                messageDiv.classList.add('text-red-600');
+                console.error('Fetch error:', error);
+            } finally {
+                // Re-enable the button and restore original text
+                submitButton.disabled = false;
+                submitButton.textContent = 'GET THE FREE REPORT NOW!';
+            }
+        });
+    </script>
+</body>
+</html>
+
