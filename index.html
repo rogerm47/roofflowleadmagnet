@@ -127,8 +127,20 @@
                     console.error('Webhook error:', errorData);
                 }
             } catch (error) {
-                // Network error or other issue with the fetch request
-                messageDiv.innerHTML = `<p class="text-red-600 font-semibold">Could not connect. Please check your internet connection and try again.</p>`;
+                // This 'catch' block will often run into a TypeError due to a CORS issue.
+                // CORS (Cross-Origin Resource Sharing) is a browser security feature.
+                // To FIX THIS: The server hosting the webhook (at railway.app) must be configured
+                // to send an 'Access-Control-Allow-Origin' header that allows requests
+                // from the domain where this page is viewed.
+                // For n8n webhooks, you may need to adjust CORS settings in your environment variables
+                // or the configuration for the webserver running n8n.
+
+                let errorMessage = 'Could not connect. Please check your internet connection and try again.';
+                if (error instanceof TypeError) {
+                    errorMessage = 'Submission failed. This is likely a CORS configuration issue on the webhook server. Please check the browser console (F12) for more details.';
+                }
+                
+                messageDiv.innerHTML = `<p class="text-red-600 font-semibold">${errorMessage}</p>`;
                 messageDiv.classList.remove('text-green-600');
                 messageDiv.classList.add('text-red-600');
                 console.error('Fetch error:', error);
