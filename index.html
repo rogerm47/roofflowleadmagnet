@@ -3,154 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RoofFlow AI - Free Report</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>Free Report: 9 Roofing Red Flags</title>
+    <!-- Import Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Import Inter font --><link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
         }
-        .form-container {
-            background-color: #f0f0f0;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body class="bg-gray-100">
 
-    <div class="container mx-auto px-4 py-8 md:py-16">
+    <!-- Success notification bar (replaces alert()) --><div id="success-message" class="hidden fixed top-5 left-1/2 -translate-x-1/2 w-auto max-w-lg p-4 bg-green-600 text-white text-center rounded-lg shadow-lg z-50 transition-all duration-300 ease-out">
+        <p class="font-semibold">Thank you!</p>
+        <p class="text-sm">Your report is on its way to your inbox.</p>
+    </div>
 
-        <!-- Header: Your RoofFlow AI Logo -->
-        <header class="text-center mb-12">
-            <img src="roofflow (1).png" alt="RoofFlow AI Logo" class="mx-auto h-24 w-auto">
-        </header>
+    <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl w-full bg-white p-8 md:p-12 rounded-2xl shadow-2xl">
+            
+            <!-- Header Section --><div class="text-center">
+                <h1 class="text-2xl md:text-3xl font-extrabold text-red-700 uppercase tracking-wide">
+                    WARNING:
+                </h1>
+                <h2 class="mt-2 text-xl md:text-2xl font-bold text-gray-900">
+                    Don't Speak to a Single Roofer Until You Read This Free Report
+                </h2>
+                <p class="mt-3 text-base md:text-lg text-gray-600">
+                    Get Instant Access to 'The Homeowner's Red Flag Report' and discover the 9 telltale signs you're about to be ripped off by a 'rogue' roofer.
+                </p>
+            </div>
 
-        <main>
-            <!-- Main Headline -->
-            <h1 class="text-3xl md:text-5xl font-extrabold text-center mb-4 text-gray-900">
-                FREE REPORT: The Leaky Bucket Secret
-            </h1>
+            <!-- Main Content (Grid) --><div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+                
+                <!-- Left Column: Form and Visual --><div class="space-y-6">
+                    <!-- Report Visual -->The image of the report cover should have the title "Free Report: 9 Roofing Red Flags" clearly visible. The design should be professional, perhaps with a distressed or weathered texture to evoke the idea of roofing problems, but still clean and inviting as a report cover. It should be vertically oriented like a book or a document.
 
-            <!-- Sub-headline -->
-            <p class="text-lg md:text-xl text-center text-gray-600 mb-12 max-w-4xl mx-auto">
-                Discover The #1 Reason UK Roofers Lose Profitable Jobs To Slower, Cheaper Competitors... And How To Fix It In 48 Hours.
-            </p>
+                    <img src="https://placehold.co/400x520/374151/FFFFFF?text=The%5CHomeowner's%5CRed+Flag%5CReport&font=inter" 
+                         alt="The Homeowner's Red Flag Report Cover" 
+                         class="w-full h-auto rounded-lg shadow-lg mx-auto max-w-xs md:max-w-none"
+                         onerror="this.src='https://placehold.co/400x520/374151/FFFFFF?text=Report+Cover&font=inter'">
+                    
+                    <!-- Form --><div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                        <p class="text-center font-semibold text-gray-800">Enter your details below to get the free report sent straight to your inbox.</p>
+                        
+                        <form id="optin-form" class="mt-4 space-y-4" onsubmit="handleSubmit(event)">
+                            <div>
+                                <label for="first_name" class="sr-only">First Name</label>
+                                <input id="first_name" name="first_name" type="text" required 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500" 
+                                       placeholder="First Name">
+                            </div>
+                            <div>
+                                <label for="email" class="sr-only">Email Address</label>
+                                <input id="email" name="email" type="email" autocomplete="email" required 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500" 
+                                       placeholder="Best Email Address">
+                            </div>
+                            <div>
+                                <button type="submit" 
+                                        class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-lg font-bold text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-150 ease-in-out">
+                                    SEND ME THE REPORT!
+                                </button>
+                            </div>
+                        </form>
+                        <p class="mt-4 text-xs text-gray-500 text-center">
+                            100% Free. We hate spam as much as you do.
+                        </p>
+                    </div>
+                </div>
 
-            <div class="flex justify-center">
-
-                <!-- Right Side: Bullet Points & The Form -->
-                <div class="w-full max-w-2xl">
-                    <h2 class="text-2xl font-bold mb-4">Inside this free report, you'll discover:</h2>
-                    <ul class="space-y-4 mb-8">
+                <!-- Right Column: "Fascination" Points --><div class="pt-6 md:pt-0">
+                    <h2 class="text-xl md:text-2xl font-bold text-gray-900">
+                        Inside This Free Guide, You Will Discover:
+                    </h2>
+                    <ul class="mt-6 space-y-5">
                         <li class="flex items-start">
-                            <span class="text-green-500 mr-3 mt-1">✅</span>
-                            <span><strong>The "Golden 5 Minutes":</strong> Why your chance of winning a new job drops by 80% if you don't respond within this tiny window (and how your competitors are ruthlessly exploiting it).</span>
+                            <div class="flex-shrink-0">
+                                <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <p class="ml-3 text-base text-gray-700">
+                                <strong class="text-gray-900">The "Cash Deal" Trap:</strong> The phrase rogue roofers use to instantly void your home insurance, leaving you 100% liable for any future damage.
+                            </p>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-green-500 mr-3 mt-1">✅</span>
-                            <span><strong>The £3,550 Mistake:</strong> The real, painful cost of a single missed website lead. We'll show you how to calculate exactly what this is costing your business each month.</span>
+                            <div class="flex-shrink-0">
+                                <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <p class="ml-3 text-base text-gray-700">
+                                <strong class="text-gray-900">The #1 Red Flag in Every Quote:</strong> The single detail "cowboy" roofers deliberately leave out, allowing them to legally add thousands in "unexpected" fees later.
+                            </p>
                         </li>
                         <li class="flex items-start">
-                             <span class="text-green-500 mr-3 mt-1">✅</span>
-                            <span><strong>The Unfair Advantage:</strong> The simple, automated system that makes you the first contractor they speak to, every single time, even if you're up on a roof or pricing a job.</span>
+                            <div class="flex-shrink-0">
+                                <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <p class="ml-3 text-base text-gray-700">
+                                <strong class="text-gray-900">The Dirty Truth About Guarantees:</strong> The one simple question that reveals if a roofer's "10-Year Guarantee" is completely worthless.
+                            </p>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <p class="ml-3 text-base text-gray-700">
+                                <strong class="text-gray-900">The High-Pressure Tactic:</strong> How to instantly shut down the "we're in the area just for today" sales pitch designed to panic you into a bad decision.
+                            </p>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <p class="ml-3 text-base text-gray-700">
+                                <strong class="text-gray-900">The "Anti-Rogue Checklist":</strong> A simple 5-point checklist you must use before letting *any* contractor set foot on your property.
+                            </p>
                         </li>
                     </ul>
-
-                    <p class="font-semibold mb-4 text-center md:text-left">Enter your details below to get instant access:</p>
-
-                    <div class="bg-gray-200 p-6 rounded-lg shadow-inner">
-                        <form id="optin-form">
-                            <div class="mb-4">
-                                <label for="fname" class="font-bold block mb-2">First Name:</label>
-                                <input type="text" id="fname" name="fname" placeholder="Enter your first name" class="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
-                            </div>
-                            <div class="mb-6">
-                                <label for="email" class="font-bold block mb-2">Primary Email Address:</label>
-                                <input type="email" id="email" name="email" placeholder="Enter your best email address" class="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
-                            </div>
-                            <button type="submit" class="w-full p-4 bg-orange-600 text-white border-none font-bold text-lg rounded-md cursor-pointer hover:bg-orange-700 transition-colors duration-300 shadow-lg">
-                                GET THE FREE REPORT NOW!
-                            </button>
-                        </form>
-                         <div id="form-message" class="mt-4 text-center"></div>
-                    </div>
-                    <p class="text-center text-xs text-gray-500 mt-4">🔒 100% Secure. We never share your email.</p>
                 </div>
+
             </div>
-        </main>
+
+            <!-- Bottom CTA --><div class="mt-12 text-center border-t border-gray-200 pt-8">
+                <h2 class="text-xl md:text-2xl font-bold text-gray-900">
+                    Get Peace of Mind. Download Your Free Report Now.
+                </h2>
+                <button type="submit" form="optin-form"
+                        class="mt-6 inline-flex justify-center py-3 px-10 border border-transparent rounded-lg shadow-sm text-lg font-bold text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-150 ease-in-out">
+                    SEND ME THE FREE REPORT!
+                </button>
+            </div>
+        </div>
     </div>
 
     <script>
-        const form = document.getElementById('optin-form');
-        const messageDiv = document.getElementById('form-message');
-        const submitButton = form.querySelector('button[type="submit"]');
-
-        form.addEventListener('submit', async function(event) {
-            event.preventDefault(); // Stop the form from submitting the traditional way
-
-            const webhookUrl = 'https://primary-production-58a3.up.railway.app/webhook/9f58fa98-ac8c-447e-92ea-f5fc589c3ada';
-            const firstName = document.getElementById('fname').value;
+        // Simple function to handle form submission and display the success bar
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevent the actual form submission
+            
+            // Get data (in a real app, you would send this to your email system)
+            const name = document.getElementById('first_name').value;
             const email = document.getElementById('email').value;
+            console.log('Form submitted:', { name, email });
 
-            // Disable button and show loading text to prevent multiple submissions
-            submitButton.disabled = true;
-            submitButton.textContent = 'SENDING...';
+            // Show the success bar
+            const successMessage = document.getElementById('success-message');
+            successMessage.classList.remove('hidden');
+            successMessage.classList.add('translate-y-0');
 
-            const data = {
-                firstName: firstName,
-                email: email
-            };
+            // Reset the form
+            document.getElementById('optin-form').reset();
 
-            try {
-                const response = await fetch(webhookUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data)
-                });
+            // Hide the bar after 4 seconds
+            setTimeout(() => {
+                successMessage.classList.add('hidden');
+                successMessage.classList.remove('translate-y-0');
+            }, 4000);
 
-                if (response.ok) {
-                    // Webhook received the data successfully
-                    messageDiv.innerHTML = `<p class="text-green-600 font-semibold">Thank you, ${firstName}! Your report is on its way.</p>`;
-                    messageDiv.classList.remove('text-red-600');
-                    messageDiv.classList.add('text-green-600');
-                    form.reset();
-                } else {
-                    // Webhook returned an error
-                    const errorData = await response.text();
-                    messageDiv.innerHTML = `<p class="text-red-600 font-semibold">Oops! Something went wrong. Please try again.</p>`;
-                    messageDiv.classList.remove('text-green-600');
-                    messageDiv.classList.add('text-red-600');
-                    console.error('Webhook error:', errorData);
-                }
-            } catch (error) {
-                // This 'catch' block will often run into a TypeError due to a CORS issue.
-                // CORS (Cross-Origin Resource Sharing) is a browser security feature.
-                // To FIX THIS: The server hosting the webhook (at railway.app) must be configured
-                // to send an 'Access-Control-Allow-Origin' header that allows requests
-                // from the domain where this page is viewed.
-                // For n8n webhooks, you may need to adjust CORS settings in your environment variables
-                // or the configuration for the webserver running n8n.
-
-                let errorMessage = 'Could not connect. Please check your internet connection and try again.';
-                if (error instanceof TypeError) {
-                    errorMessage = 'Submission failed. This is likely a CORS configuration issue on the webhook server. Please check the browser console (F12) for more details.';
-                }
-                
-                messageDiv.innerHTML = `<p class="text-red-600 font-semibold">${errorMessage}</p>`;
-                messageDiv.classList.remove('text-green-600');
-                messageDiv.classList.add('text-red-600');
-                console.error('Fetch error:', error);
-            } finally {
-                // Re-enable the button and restore original text
-                submitButton.disabled = false;
-                submitButton.textContent = 'GET THE FREE REPORT NOW!';
-            }
-        });
+            // In a real scenario, you would redirect the user to the Godfather Offer page
+            // e.g., window.location.href = '/godfather-offer-page';
+            console.log('Redirecting to Godfather Offer page (simulation)...');
+        }
     </script>
+
 </body>
 </html>
 
