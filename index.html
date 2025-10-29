@@ -148,31 +148,69 @@
 
     <script>
         // Simple function to handle form submission and display the success bar
-        function handleSubmit(event) {
+        async function handleSubmit(event) { // Zmienione na async
             event.preventDefault(); // Prevent the actual form submission
             
+            const form = document.getElementById('optin-form');
+            const button = form.querySelector('button[type="submit"]');
+            const originalButtonText = button.innerHTML;
+
+            // Wyłącz przycisk i pokaż stan ładowania
+            button.disabled = true;
+            button.innerHTML = 'Sending...';
+
             // Get data (in a real app, you would send this to your email system)
             const name = document.getElementById('first_name').value;
             const email = document.getElementById('email').value;
-            console.log('Form submitted:', { name, email });
+            const webhookUrl = 'https://primary-production-58a3.up.railway.app/webhook/9f58fa98-ac8c-447e-92ea-f5fc589c3ada';
+            const data = { name, email };
+            
+            console.log('Form submitted:', data);
 
-            // Show the success bar
-            const successMessage = document.getElementById('success-message');
-            successMessage.classList.remove('hidden');
-            successMessage.classList.add('translate-y-0');
+            try {
+                // Wyślij dane do webhooka
+                const response = await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
 
-            // Reset the form
-            document.getElementById('optin-form').reset();
+                if (!response.ok) {
+                    // Obsłuż błędy HTTP
+                    throw new Error(`Webhook failed with status: ${response.status}`);
+                }
+                
+                console.log('Webhook triggered successfully');
 
-            // Hide the bar after 4 seconds
-            setTimeout(() => {
-                successMessage.classList.add('hidden');
-                successMessage.classList.remove('translate-y-0');
-            }, 4000);
+                // Show the success bar
+                const successMessage = document.getElementById('success-message');
+                successMessage.classList.remove('hidden');
+                successMessage.classList.add('translate-y-0');
 
-            // In a real scenario, you would redirect the user to the Godfather Offer page
-            // e.g., window.location.href = '/godfather-offer-page';
-            console.log('Redirecting to Godfather Offer page (simulation)...');
+                // Reset the form
+                form.reset();
+
+                // Hide the bar after 4 seconds
+                setTimeout(() => {
+                    successMessage.classList.add('hidden');
+                    successMessage.classList.remove('translate-y-0');
+                }, 4000);
+
+                // In a real scenario, you would redirect the user to the Godfather Offer page
+                // e.g., window.location.href = '/godfather-offer-page';
+                console.log('Redirecting to Godfather Offer page (simulation)...');
+
+            } catch (error) {
+                console.error('Error sending data to webhook:', error);
+                // Opcjonalnie: Pokaż użytkownikowi komunikat o błędzie.
+                // Na razie po prostu przywrócimy przycisk.
+            } finally {
+                // Włącz przycisk ponownie i przywróć tekst
+                button.disabled = false;
+                button.innerHTML = originalButtonText;
+            }
         }
     </script>
 
